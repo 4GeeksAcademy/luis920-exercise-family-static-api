@@ -34,7 +34,7 @@ def handle_hello():
     try:
         members = jackson_family.get_all_members()
         if not members:  
-            return jsonify({"error": "No se encontraron miembros"}), 404
+            return jsonify({"msg": "No se encontraron miembros"}), 404
         return jsonify(members), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -60,7 +60,7 @@ def add_member():
         new_member = jackson_family.add_member(member)
         return jsonify(new_member), 200
     except Exception as e:
-        return jsonify({"Error al agregar a member ": str(e)}), 500
+        return jsonify({"Error": str(e)}), 500
 
 
 # MÉTODO DELETE /member
@@ -72,7 +72,7 @@ def delete_member(id):
             return jsonify(result), 200
         return jsonify({"msg": "Miembro no encontrado"}), 404
     except Exception as e:
-        return jsonify({"Erro": str(e)}), 500
+        return jsonify({"Error": str(e)}), 500
 
 
 
